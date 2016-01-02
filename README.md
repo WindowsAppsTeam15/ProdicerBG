@@ -44,7 +44,7 @@ According to the requirements from 2014
 
 (Up to 9 points) Use some kind of remote data:
 
--   I would suggest using again Parse.com for our remote data;
+-   I would suggest using again Parse.com or try node.js as this course goes at the same time;
 
 (Up to 7 points) Service for a background jobs:
 
