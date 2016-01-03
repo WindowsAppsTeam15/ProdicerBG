@@ -36,7 +36,7 @@ According to the requirements from 2014
 
 (Up to 9 points) Use two of the following content providers: Capture, Connection, Contacts, Media, Third-party provider (Facebook, Google, etc…):
 
--   We will use the Media to upload logo of the producer. We will also use third party providers – Google Maps and Gmail.
+-   We will use the Media to upload logo of the producer and the Contacts to add new producer as a contact if the user wishes. We will also use third party providers – Google Maps and Gmail.
 
 (Up to 9 points) Use SQLite as a data storage:
 
