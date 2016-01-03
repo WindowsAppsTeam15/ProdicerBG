@@ -9,9 +9,9 @@ It should be a platform containing information about Bulgarian producers. Each p
 What we should implement
 ------------------------
 
--   Welcome screen – it will have three options to choose from – create new profile (register new producer), basic search for producer (by name), or go to advanced search of producers;
+-   Welcome screen – it will have three options to choose from – create new profile (register new producer), basic search for producer (by name or by type of production - we can implement easyly this using the Search widget of Android), or go to advanced search of producers (not sure if we need this at all);
 
--   The advanced search – it will be by name, by type of production or/and by address. The search by address will allow to search from the current position of the user or the user will set position from which he/she wants to search;
+-   (not sure if we need this at all) The advanced search – it will be by name, by type of production or/and by address. The search by address will allow to search from the current position of the user or the user will set position from which he/she wants to search;
 
 -   The registration form - if the user chooses to register new producer, he/she will have a form to fill in with all the information needed for the platform;
 
