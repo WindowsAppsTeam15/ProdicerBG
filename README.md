@@ -70,4 +70,5 @@ According to the requirements from 2014
 
 (Up to 6 points) Validation and Error handling
 
-* We could also try to make the App bilingual - in English and in Bulgarian. It is quite easy to do that
+
+We could also try to make the App bilingual - in English and in Bulgarian. It is quite easy to do that
