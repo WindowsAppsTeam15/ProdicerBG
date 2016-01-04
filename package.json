@@ -1,0 +1,33 @@
+{
+  "name": "ProdicerBG",
+  "version": "0.0.1",
+  "description": "Android mobile app node.js server. Catalogue of Bulgarian producers.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WindowsAppsTeam15/ProdicerBG.git"
+  },
+  "keywords": [
+    "Android",
+    "node.js",
+    "Bugarian",
+    "producer"
+  ],
+  "author": "Team15",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WindowsAppsTeam15/ProdicerBG/issues"
+  },
+  "homepage": "https://github.com/WindowsAppsTeam15/ProdicerBG",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.4",
+    "passport": "^0.3.2",
+    "passport-http-bearer": "^1.0.1"
+  }
+}
