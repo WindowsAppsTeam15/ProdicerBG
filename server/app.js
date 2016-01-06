@@ -38,6 +38,9 @@ app.use(bodyParser.json());
 let producersRouter = require('./routers/producers-router');
 producersRouter(app);
 
+let usersRouter = require('./routers/users-router');
+usersRouter(app);
+
 // Middleware to handle errors on the server
 app.use(function(err, req, res, next) {
     if (err) {

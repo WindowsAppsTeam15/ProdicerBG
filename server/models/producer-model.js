@@ -6,11 +6,35 @@ let mongoose = require('mongoose');
 let producerSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String,
         required: true
+    },
+    type: {
+        type: String,
+        required: true,
+        lowercase: true
+        // enum: [Array]
+    },
+    mainProducts: {
+        type: Array,
+        required: true
+    },
+    telephone: {
+        type: String
+    },
+    email: {
+        type: String,
+        required: true,
+        lowercase: true,
+        match: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    },
+    adress: {
+        latitude: Number,
+        longitude: Number
     },
     userId: {
         type: String,
@@ -19,6 +43,10 @@ let producerSchema = new mongoose.Schema({
     isDeleted: {
         type: Boolean,
         required: true
+    // },
+    // img: {
+    //     data: Buffer,
+    //     contentType: String
     }
 });
 
