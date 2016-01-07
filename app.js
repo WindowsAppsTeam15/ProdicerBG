@@ -6,28 +6,10 @@ let express = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport');
 
-// Here is the future implementation of the authentication
-// passport.use(new BearerStrategy(
-//     function(token, done) {
-//         User.findOne({
-//             token: token
-//         }, function(err, user) {
-//             if (err) {
-//                 return done(err);
-//             }
-//             if (!user) {
-//                 return done(null, false);
-//             }
-//             return done(null, user, {
-//                 scope: 'all'
-//             });
-//         });
-//     }
-// ));
-
 // Connecting to local mongodb
-let connectionString = 'mongodb://127.0.0.1:27017/producerbg';
-mongoose.connect(connectionString);
+// let connectionString = 'mongodb://127.0.0.1:27017/producerbg';
+let uri = process.env.MONGOLAB_URI;
+mongoose.connect(uri);
 
 // Setting up the server
 let app = express();
