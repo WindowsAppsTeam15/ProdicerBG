@@ -1,69 +1,127 @@
 DB and Server details
 =====================
 
-Producers routes:
------------------
-
-| **route**                                                         | **method** | **result**                          | **Request body**               | **Request header**                               |
-|-------------------------------------------------------------------|------------|-------------------------------------|--------------------------------|--------------------------------------------------|
-| <https://murmuring-mountain-9323.herokuapp.com/api/producers>     | GET        | Returns all producers               | {}                             | { Content-Type: application/json }               |
-| <https://murmuring-mountain-9323.herokuapp.com/api/producers>     | POST       | Registers new producer – Returns it | {“type”,                       
-                                                                                                                                                        
-                                                                                                                        “name”,                         
-                                                                                                                                                        
-                                                                                                                        “description”                   
-                                                                                                                                                        
-                                                                                                                        “mainProducts” -&gt; \[Array\]  
-                                                                                                                                                        
-                                                                                                                        “address”,                      
-                                                                                                                                                        
-                                                                                                                        “telephone”,                    
-                                                                                                                                                        
-                                                                                                                        “logo” -&gt; \[Byte array\]}    | {Authorization:                                  
-                                                                                                                                                                                                           
-                                                                                                                                                         Bearer + TOKEN,                                   
-                                                                                                                                                                                                           
-                                                                                                                                                         Content-Type: application/json }                  |
-| <https://murmuring-mountain-9323.herokuapp.com/api/producers>/:id | PUT        | Edits producer – Returns it         | {“name”,                       
-                                                                                                                                                        
-                                                                                                                        “description”                   
-                                                                                                                                                        
-                                                                                                                        “mainProducts” -&gt; \[Array\]  
-                                                                                                                                                        
-                                                                                                                        “address”,                      
-                                                                                                                                                        
-                                                                                                                        “telephone”,                    
-                                                                                                                                                        
-                                                                                                                        “logo” -&gt; \[Byte array\]}    
-                                                                                                                                                        
-                                                                                                                        (any of the above)              | {Authorization:                                  
-                                                                                                                                                                                                           
-                                                                                                                                                         Bearer + TOKEN, Content-Type: application/json }  |
-| <https://murmuring-mountain-9323.herokuapp.com/api/producers>/:id | DELETE     | Deletes producer                    | {}                             | {Authorization:                                  
-                                                                                                                                                                                                           
-                                                                                                                                                         Bearer + TOKEN, Content-Type: application/json }  |
-| <https://murmuring-mountain-9323.herokuapp.com/api/producers>/:id | GET        | Returns producer                    | {}                             | { Content-Type: application/json }               |
-
 Users routes:
 -------------
 
-| **route**                                                       | **method** | **result**                                  | **Request body** | **Request header**                               |
-|-----------------------------------------------------------------|------------|---------------------------------------------|------------------|--------------------------------------------------|
-| <https://murmuring-mountain-9323.herokuapp.com/api/users>       | POST       | Registers user – returns username and token | {"username",     
-                                                                                                                                                
-                                                                                                                              "password",       
-                                                                                                                                                
-                                                                                                                              “email”}          | { Content-Type: application/json }               |
-| <https://murmuring-mountain-9323.herokuapp.com/api/users/token> | POST       | Logs user – returns username and token      | {"username",     
-                                                                                                                                                
-                                                                                                                              "password"}       | { Content-Type: application/json }               |
-| <https://murmuring-mountain-9323.herokuapp.com/api/users>       | PUT        | Changes user details – returns username     | {"username",     
-                                                                                                                                                
-                                                                                                                              "password",       
-                                                                                                                                                
-                                                                                                                              “email”}          | {Authorization:                                  
-                                                                                                                                                                                                   
-                                                                                                                                                 Bearer + TOKEN, Content-Type: application/json }  |
+<https://murmuring-mountain-9323.herokuapp.com/api/users>
+
+POST
+
+Request body :
+
+{“username”, “password”, “email”}
+
+Request headers:
+
+{ Content-Type: application/json }
+
+Registers user – returns username and token
+
+<https://murmuring-mountain-9323.herokuapp.com/api/users/token>
+
+POST
+
+Logs user – returns username and token
+
+Request body :
+
+{"username", "password"}
+
+Request headers:
+
+{ Content-Type: application/json }
+
+<https://murmuring-mountain-9323.herokuapp.com/api/users>
+
+PUT
+
+Request body :
+
+{"username", "password", “email”}
+
+Request headers:
+
+{Authorization: Bearer + TOKEN, Content-Type: application/json }
+
+Changes user details – returns username
+
+Producers routes:
+-----------------
+
+<https://murmuring-mountain-9323.herokuapp.com/api/producers>
+
+GET
+
+Request body :
+
+{}
+
+Request headers:
+
+{ Content-Type: application/json }
+
+Returns all producers
+
+<https://murmuring-mountain-9323.herokuapp.com/api/producers/:id>
+
+GET
+
+Request body :
+
+{}
+
+Request headers:
+
+{ Content-Type: application/json }
+
+Returns producer
+
+<https://murmuring-mountain-9323.herokuapp.com/api/producers>
+
+POST
+
+Request body :
+
+{“type”, “name”, “description”, “mainProducts” -&gt; \\\[Array\\\], “address”, “telephone”, “logo” -&gt; \\\[Byte array\\\]}
+
+Request headers:
+
+{ Authorization: Bearer + TOKEN, Content-Type: application/json }
+
+Registers new producer and Returns it
+
+<https://murmuring-mountain-9323.herokuapp.com/api/producers/:id>
+
+PUT
+
+Request body :
+
+{ “name”, “description”, “mainProducts” -&gt; \\\[Array\\\], “address”, “telephone”, “logo” -&gt; \\\[Byte array\\\]}
+
+(all are optional, but at least one should be included)
+
+Request headers:
+
+{ Authorization: Bearer + TOKEN, Content-Type: application/json }
+
+Edits producer and returns it
+
+<https://murmuring-mountain-9323.herokuapp.com/api/producers/:id>
+
+DELETE
+
+Request body :
+
+{}
+
+Request headers:
+
+{ Authorization: Bearer + TOKEN, Content-Type: application/json }
+
+Deletes producer
+
+<span id="users-routes" class="anchor"></span>
 
 Registered user:
 ----------------
