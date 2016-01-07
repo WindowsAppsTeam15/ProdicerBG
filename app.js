@@ -13,7 +13,7 @@ mongoose.connect(uri);
 
 // Setting up the server
 let app = express();
-let port = 7777;
+let port = process.env.PORT;
 app.use(bodyParser.json());
 
 // Point the server to the router we have created
