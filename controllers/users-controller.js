@@ -11,7 +11,8 @@ let register = function(req, res, next) {
 
     let dbUser = new User(req.body);
     dbUser.isDeleted = false;
-
+    dbUser.token = randtoken.generate(16);
+    
     dbUser.save(function(err) {
         if (err) {
             let error = {
@@ -22,7 +23,10 @@ let register = function(req, res, next) {
             return;
         } else {
             res.status(201);
-            res.json(dbUser);
+            res.json({
+                username: dbUser.username,
+                token: dbUser.token
+            });
         }
     });
 };
@@ -30,6 +34,7 @@ let register = function(req, res, next) {
 let login = function(req, res, next) {
     // Validate username and password
     let user = req.body;
+    user.username = user.username.toLowerCase();
     User.findOne({
         username: user.username
     }, function(err, dbUser) {

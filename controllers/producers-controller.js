@@ -73,6 +73,7 @@ let getById = function(req, res, next) {
 let createNew = function(req, res, next) {
     var dbProducer = new Producer(req.body);
     dbProducer.userId = req.user._id;
+    dbProducer.email = req.user.email;
     dbProducer.isDeleted = false;
 
     // var imgPath = './img/logo.png';
@@ -81,7 +82,7 @@ let createNew = function(req, res, next) {
 
     dbProducer.type = 'Machinary';
     dbProducer.mainProducts = ['cars'];
-    dbProducer.email = req.user.email;
+
 
     dbProducer.save(function(err) {
         if (err) {
@@ -99,10 +100,10 @@ let createNew = function(req, res, next) {
 };
 
 let deleteProducer = function(req, res, next) {
-    Producer.find({
+    Producer.findOne({
         "_id": req.params.id,
         "isDeleted": false
-    }, function(err, producers) {
+    }, function(err, producer) {
         if (err) {
             let error = {
                 message: err.message,
@@ -110,7 +111,7 @@ let deleteProducer = function(req, res, next) {
             };
             next(error);
             return;
-        } else if (!producers[0]) {
+        } else if (!producer) {
             let error = {
                 message: 'There is no user with the given id.',
                 status: 400
@@ -119,7 +120,16 @@ let deleteProducer = function(req, res, next) {
             return;
         }
 
-        let producer = producers[0];
+        let userId = req.user._id;
+        if (userId !== producer.userId) {
+            let error = {
+                message: 'You are not authorized to delete this entry.',
+                status: 401
+            };
+            next(error);
+            return;
+        }
+
         producer.isDeleted = true;
         producer.save(function(err) {
             if (err) {
@@ -131,17 +141,19 @@ let deleteProducer = function(req, res, next) {
                 return;
             } else {
                 res.status(200);
-                res.json('Producer deleted.');
+                res.json({
+                    message: 'Producer deleted.'
+                });
             }
         });
     });
 };
 
 let edit = function(req, res, next) {
-    Producer.find({
+    Producer.findOne({
         "_id": req.params.id,
         "isDeleted": false
-    }, function(err, producers) {
+    }, function(err, producerToBeModified) {
         if (err) {
             let error = {
                 message: err.message,
@@ -149,7 +161,7 @@ let edit = function(req, res, next) {
             };
             next(error);
             return;
-        } else if (!producers[0]) {
+        } else if (!producerToBeModified) {
             let error = {
                 message: 'There is no user with the given id.',
                 status: 400
@@ -158,9 +170,21 @@ let edit = function(req, res, next) {
             return;
         }
 
-        let producerToBeModified = producers[0];
+        let userId = req.user._id;
+        if (userId != producerToBeModified.userId) {
+            let error = {
+                message: 'You are not authorized to edit this entry.',
+                status: 401
+            };
+            next(error);
+            return;
+        }
+
         producerToBeModified.name = req.body.name || producerToBeModified.name;
-        producerToBeModified.description = req.body.name || producerToBeModified.description;
+        producerToBeModified.description = req.body.description || producerToBeModified.description;
+        producerToBeModified.mainProducts = req.body.mainProducts || producerToBeModified.mainProducts;
+        producerToBeModified.telephone = req.body.telephone || producerToBeModified.telephone;
+        producerToBeModified.adress = req.body.adress || producerToBeModified.adress;
 
         producerToBeModified.save(function(err) {
             if (err) {
