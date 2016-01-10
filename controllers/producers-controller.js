@@ -76,13 +76,9 @@ let createNew = function(req, res, next) {
     dbProducer.email = req.user.email;
     dbProducer.isDeleted = false;
 
-    // var imgPath = './img/logo.png';
-    // dbProducer.img.data = fs.readFileSync(imgPath);
-    // dbProducer.img.contentType = 'image/png';
-
-    dbProducer.type = 'Machinary';
-    dbProducer.mainProducts = ['cars'];
-
+    var imgPath = './img/logo.png';
+    dbProducer.img.data = fs.readFileSync(imgPath);
+    dbProducer.img.contentType = 'image/png';
 
     dbProducer.save(function(err) {
         if (err) {
