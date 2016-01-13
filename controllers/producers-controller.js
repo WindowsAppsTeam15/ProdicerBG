@@ -75,7 +75,8 @@ let createNew = function(req, res, next) {
     dbProducer.userId = req.user._id;
     dbProducer.email = req.user.email;
     dbProducer.isDeleted = false;
-
+    // var imageBufer = new Buffer(req.body.logo);
+    // dbProducer.logo = imageBufer;
     // var imgPath = './img/logo.png';
     // dbProducer.img.data = fs.readFileSync(imgPath);
     // dbProducer.img.contentType = 'image/png';

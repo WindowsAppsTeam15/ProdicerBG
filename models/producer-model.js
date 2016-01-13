@@ -47,7 +47,7 @@ let producerSchema = new mongoose.Schema({
         required: true
     },
     logo: {
-        type: Buffer
+        type: Array
     }
 });
 
