@@ -7,14 +7,17 @@ let express = require('express'),
     passport = require('passport');
 
 // Connecting to local mongodb
-// let connectionString = 'mongodb://127.0.0.1:27017/producerbg';
-let uri = process.env.MONGOLAB_URI;
-mongoose.connect(uri);
+let connectionString = 'mongodb://127.0.0.1:27017/producerbg';
+// let connectionString = process.env.MONGOLAB_URI;
+mongoose.connect(connectionString);
 
 // Setting up the server
 let app = express();
-let port = process.env.PORT;
-app.use(bodyParser.json());
+
+let port = 7777;
+// let port = process.env.PORT;
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 
 // Point the server to the router we have created
 let producersRouter = require('./routers/producers-router');

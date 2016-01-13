@@ -32,9 +32,11 @@ let producerSchema = new mongoose.Schema({
         lowercase: true,
         match: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     },
-    adress: {
-        latitude: Number,
-        longitude: Number
+    addressLongitude: {
+        type: Number
+    },
+    addressLatitude: {
+        type: Number
     },
     userId: {
         type: String,
@@ -44,9 +46,8 @@ let producerSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    img: {
-        data: Buffer,
-        contentType: String
+    logo: {
+        type: Buffer
     }
 });
 
