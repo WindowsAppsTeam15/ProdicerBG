@@ -7,15 +7,15 @@ let express = require('express'),
     passport = require('passport');
 
 // Connecting to local mongodb
-let connectionString = 'mongodb://127.0.0.1:27017/producerbg';
-// let connectionString = process.env.MONGOLAB_URI;
+// let connectionString = 'mongodb://127.0.0.1:27017/producerbg';
+let connectionString = process.env.MONGOLAB_URI;
 mongoose.connect(connectionString);
 
 // Setting up the server
 let app = express();
 
-let port = 7777;
-// let port = process.env.PORT;
+// let port = 7777;
+let port = process.env.PORT;
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 
