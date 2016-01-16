@@ -6,6 +6,18 @@ let mongoose = require('mongoose'),
 require('../models/producer-model');
 let Producer = mongoose.model('Producer');
 
+let getCount = function(req, res, next) {
+    Producer.count({}, function(err, count) {
+        if (err) {
+            next(err);
+            return;
+        }
+
+        res.status(200);
+        res.json(count);
+    })
+};
+
 let getAll = function(req, res, next) {
     let requestChars = {
         name: '',
@@ -204,7 +216,8 @@ let controller = {
     getById,
     createNew,
     deleteProducer,
-    edit
+    edit,
+    getCount
 };
 
 module.exports = controller;
