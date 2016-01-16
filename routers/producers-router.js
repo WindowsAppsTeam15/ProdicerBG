@@ -10,8 +10,8 @@ require('../authentication-config');
 let router = express.Router();
 
 router.get('/', producerController.getAll)
-    .get('/:id', producerController.getById)
     .get('/count', producerController.getCount)
+    .get('/:id', producerController.getById)
     .post('/', passport.authenticate('bearer', {
             session: false
         }),
