@@ -110,22 +110,22 @@ let deleteProducer = function(req, res, next) {
             return;
         } else if (!producer) {
             let error = {
-                message: 'There is no user with the given id.',
+                message: 'There is no producer with the given id.',
                 status: 400
             };
             next(error);
             return;
         }
 
-        let userId = req.user._id;
-        if (userId !== producer.userId) {
-            let error = {
-                message: 'You are not authorized to delete this entry.',
-                status: 401
-            };
-            next(error);
-            return;
-        }
+        // let userId = req.user._id;
+        // if (userId !== producer.userId) {
+        //     let error = {
+        //         message: 'You are not authorized to delete this entry.',
+        //         status: 401
+        //     };
+        //     next(error);
+        //     return;
+        // }
 
         producer.isDeleted = true;
         producer.save(function(err) {
@@ -167,15 +167,15 @@ let edit = function(req, res, next) {
             return;
         }
 
-        let userId = req.user._id;
-        if (userId != producerToBeModified.userId) {
-            let error = {
-                message: 'You are not authorized to edit this entry.',
-                status: 401
-            };
-            next(error);
-            return;
-        }
+        // let userId = req.user._id;
+        // if (userId != producerToBeModified.userId) {
+        //     let error = {
+        //         message: 'You are not authorized to edit this entry.',
+        //         status: 401
+        //     };
+        //     next(error);
+        //     return;
+        // }
 
         producerToBeModified.name = req.body.name || producerToBeModified.name;
         producerToBeModified.description = req.body.description || producerToBeModified.description;
