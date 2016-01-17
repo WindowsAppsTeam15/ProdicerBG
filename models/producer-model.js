@@ -1,6 +1,9 @@
 'use strict';
 
 let mongoose = require('mongoose');
+require('mongoose-double')(mongoose);
+
+var SchemaTypes = mongoose.Schema.Types;
 
 // Defining producer schema - similar as EF code first for db entry
 let producerSchema = new mongoose.Schema({
@@ -33,10 +36,10 @@ let producerSchema = new mongoose.Schema({
         match: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     },
     addressLongitude: {
-        type: Number
+        type: SchemaTypes.Double
     },
     addressLatitude: {
-        type: Number
+        type: SchemaTypes.Double
     },
     userId: {
         type: String,
