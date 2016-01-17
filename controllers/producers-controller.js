@@ -21,13 +21,13 @@ let getCount = function(req, res, next) {
 let getAll = function(req, res, next) {
     let requestChars = {
         name: '',
-        description: ''
+        userId: ''
     };
     if (req.query.name) {
         requestChars.name = req.query.name;
     }
-    if (req.query.description) {
-        requestChars.description = req.query.description;
+    if (req.query.userId) {
+        requestChars.userId = req.query.userId;
     }
 
     Producer.find({
@@ -36,11 +36,11 @@ let getAll = function(req, res, next) {
             "$options": "i"
         },
         "description": {
-            "$regex": requestChars.description,
+            "$regex": requestChars.userId,
             "$options": "i"
         },
         "isDeleted": false
-    }, function(err, producers) {
+    }, 'name type logo', function(err, producers) {
         if (err) {
             let error = {
                 message: err.message,
